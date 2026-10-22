@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>A Special Letter for Papa ❤️</title>
+  
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      #020617,
+      #101b3e,
+      #261438
+    );
+    font-family: Georgia, serif;
+    color: #fff3dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+.letter-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 45px 35px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    #fff8e9,
+    #f6dfb9
+  );
+
+  color: #57351f;
+  border: 2px solid #d6a85b;
+
+  box-shadow:
+    0 0 25px rgba(255, 200, 100, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+
+  animation: letterAppear 1.5s ease-out both;
+}
+
+.letter-card h1 {
+  color: #8b4d28;
+  font-size: clamp(26px, 5vw, 42px);
+}
+
+.letter-card p {
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.letter-page p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.next-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #b87832, #e9ba68);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.next-btn:hover {
+  transform: scale(1.07);
+}
+
+/* Keep the letter card centered */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-card {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Keep all letter pages inside the card */
+.letter-page {
+  width: 100%;
+  color: #57351f;
+  text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="letter-card">
+
+  
+<div class="letter-page" id="page1">
+
+  <h1>To My Dearest Papa ❤️</h1>
+
+  <p>Happy Birthday, Papa! 🎂🎉</p>
+
+  <p>
+    You are my first hero, my biggest supporter,
+    and my greatest inspiration.
+  </p>
+
+  <p>
+    From the very beginning, you have always
+    been there for me, guiding me, protecting me,
+    and filling my life with love.
+  </p>
+
+  <p>
+    Today, I just want to remind you how
+    incredibly special you are to me. ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(2)">
+    Next Page →
+  </button>
+
+</div>
+
+<div class="letter-page" id="page2" style="display: none;">
+
+  <h1>Thank You, Papa ❤️</h1>
+
+  <p>
+    Thank you for every sacrifice you have made
+    for me, even the ones I may never fully know.
+  </p>
+
+  <p>
+    Thank you for believing in me when I doubted
+    myself, and for always wanting the best for me.
+  </p>
+
+  <p>
+    I know I sometimes make mistakes,
+    and I am sorry for the times I have
+    disappointed you.
+  </p>
+
+  <p>
+    My biggest dream is to make you proud. ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(1)">
+    ← Previous
+  </button>
+
+  <button class="next-btn" onclick="showPage(3)">
+    Next Page →
+  </button>
+
+</div>
+
+<div class="letter-page" id="page3" style="display: none;">
+
+  <h1>My Promise to You, Papa ❤️</h1>
+
+  <p>
+    Papa, I know I still have so much to learn
+    and so many dreams to achieve.
+  </p>
+
+  <p>
+    But one of my biggest dreams is to see
+    you smiling with pride because of me.
+  </p>
+
+  <p>
+    I promise to keep working hard,
+    to learn from my mistakes,
+    and to become a better person every day.
+  </p>
+
+  <p>
+    No matter how old I become,
+    I will always be your child,
+    and you will always be my hero. ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(2)">
+    ← Previous
+  </button>
+
+  <button class="next-btn" onclick="showPage(4)">
+    Next Page →
+  </button>
+
+</div>
+
+<div class="letter-page" id="page4" style="display: none;">
+
+  <h1>Happy Birthday, My Hero! 🎂❤️</h1>
+
+  <p>
+    On your special day, I wish you
+    endless happiness, good health,
+    peace, and a lifetime of beautiful moments.
+  </p>
+
+  <p>
+    May every dream in your heart come true,
+    and may your smile never fade.
+  </p>
+
+  <p>
+    No words can ever fully express
+    how much you mean to me.
+    Thank you for being my Papa.
+  </p>
+
+  <h2>I LOVE YOU SO MUCH, PAPA! ❤️</h2>
+
+  <p>
+    🎂 HAPPY BIRTHDAY TO THE
+    WORLD'S BEST PAPA! 🎂
+  </p>
+
+  <p>
+    With all my love,<br>
+    Your loving child ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(3)">
+    ← Previous
+  </button>
+
+</div>
+
+<div class="letter-page" id="page4" style="display: none;">
+
+  <h1>Happy Birthday, My Hero! 🎂❤️</h1>
+
+  <p>
+    On your special day, I wish you
+    endless happiness, good health,
+    peace, and a lifetime of beautiful moments.
+  </p>
+
+  <p>
+    May every dream in your heart come true,
+    and may your smile never fade.
+  </p>
+
+  <p>
+    No words can ever fully express
+    how much you mean to me.
+    Thank you for being my Papa.
+  </p>
+
+  <h2>I LOVE YOU SO MUCH, PAPA! ❤️</h2>
+
+  <p>
+    🎂 HAPPY BIRTHDAY TO THE
+    WORLD'S BEST PAPA! 🎂
+  </p>
+
+  <p>
+    With all my love,<br>
+    Your loving child ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(3)">
+    ← Previous
+  </button>
+
+</div>
+
+<div class="letter-page" id="page4" style="display: none;">
+
+  <h1>Happy Birthday, My Hero! 🎂❤️</h1>
+
+  <p>
+    On your special day, I wish you
+    endless happiness, good health,
+    peace, and a lifetime of beautiful moments.
+  </p>
+
+  <p>
+    May every dream in your heart come true,
+    and may your smile never fade.
+  </p>
+
+  <p>
+    No words can ever fully express
+    how much you mean to me.
+    Thank you for being my Papa.
+  </p>
+
+  <h2>I LOVE YOU SO MUCH, PAPA! ❤️</h2>
+
+  <p>
+    🎂 HAPPY BIRTHDAY TO THE
+    WORLD'S BEST PAPA! 🎂
+  </p>
+
+  <p>
+    With all my love,<br>
+    Your loving child ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(3)">
+    ← Previous
+  </button>
+
+</div>
+
+<div class="letter-page" id="page4" style="display: none;">
+
+  <h1>Happy Birthday, My Hero! 🎂❤️</h1>
+
+  <p>
+    On your special day, I wish you
+    endless happiness, good health,
+    peace, and a lifetime of beautiful moments.
+  </p>
+
+  <p>
+    May every dream in your heart come true,
+    and may your smile never fade.
+  </p>
+
+  <p>
+    No words can ever fully express
+    how much you mean to me.
+    Thank you for being my Papa.
+  </p>
+
+  <h2>I LOVE YOU SO MUCH, PAPA! ❤️</h2>
+
+  <p>
+    🎂 HAPPY BIRTHDAY TO THE
+    WORLD'S BEST PAPA! 🎂
+  </p>
+
+  <p>
+    With all my love,<br>
+    Your loving child ❤️
+  </p>
+
+  <button class="next-btn" onclick="showPage(3)">
+    ← Previous
+  </button>
+
+</div>
+
+</div>
+
+<script>
+  function showPage(pageNumber) {
+    const pages = document.querySelectorAll(".letter-page");
+
+    pages.forEach(function(page) {
+      page.style.display = "none";
+    });
+
+    const selectedPage = document.getElementById(
+      "page" + pageNumber
+    );
+
+    if (selectedPage) {
+      selectedPage.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>

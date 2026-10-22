@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Papa ❤️</title>
+
+  <style>
+    
+/* Beautiful Night Sky */
+body {
+  background: linear-gradient(
+    to bottom,
+    #020312 0%,
+    #071330 50%,
+    #111c40 100%
+  );
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: #02040d;
+      color: white;
+      font-family: Georgia, serif;
+    }
+
+    /* Full-screen fireworks display */
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Birthday content */
+    .birthday-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px 20px 90px;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 95px);
+      line-height: 1.15;
+      color: #ffdf91;
+      -webkit-text-stroke: 1px #58300c;
+      text-shadow:
+        3px 5px 0 #3b230d,
+        0 0 25px #ffbd4a;
+      animation: floatText 4s ease-in-out infinite;
+    }
+
+    @keyframes floatText {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .subtitle {
+      margin-bottom: 25px;
+      font-size: 15px;
+      letter-spacing: 4px;
+      color: #ffe1a4;
+    }
+
+    .letter-btn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 16px 30px;
+      border-radius: 40px;
+      background: linear-gradient(
+        135deg, #b98230, #ffe3a0, #c18a38
+      );
+      color: #241500;
+      font: bold 16px Arial, sans-serif;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 0 25px #ffc65c88;
+      pointer-events: auto;
+    }
+
+    .letter-btn:hover {
+      box-shadow: 0 0 40px #ffd77b;
+    }
+/* Night Sky Stars */
+#nightStars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.night-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 1px #a9cfff;
+  animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Moving Night Clouds */
+#nightClouds {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cloud {
+  position: absolute;
+  left: -70%;
+  width: 60%;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(70, 95, 150, 0.24);
+  filter: blur(35px);
+  animation: cloudMove 12s linear infinite;
+  will-change: transform;
+}
+
+.cloud1 {
+  top: 15%;
+}
+
+.cloud2 {
+  top: 45%;
+  animation-duration: 9s;
+  animation-delay: -5s;
+}
+
+.cloud3 {
+  top: 75%;
+  animation-duration: 15s;
+  animation-delay: -9s;
+}
+
+@keyframes cloudMove {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(290vw);
+  }
+}
+
+  </style>
+</head>
+
+
+<body onclick="enableFireworkSound()">
+    
+<div id="nightClouds">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+</div>
+
+<div id="nightStars"></div>
+
+  <canvas id="fireworks"></canvas>
+
+  <main class="birthday-content">
+
+    <p class="subtitle">
+      ✨ TODAY IS ALL ABOUT YOU ✨
+    </p>
+
+    <h1>
+      HAPPY BIRTHDAY<br>
+      PAPA ❤️
+    </h1>
+
+    <a href="letter.html" class="letter-btn">
+      💌 Open My Special Letter
+    </a>
+
+  </main>
+
+<script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d", { alpha: true });
+
+let rockets = [];
+let particles = [];
+
+const colors = [
+  "#ffd36b",
+  "#ff5c5c",
+  "#55caff",
+  "#ff7ee2",
+  "#a6ff8c",
+  "#ffffff"
+];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function launchRocket() {
+  const w = canvas.width;
+  const h = canvas.height;
+
+  rockets.push({
+    x: Math.random() * w,
+    y: h,
+    targetY: h * (0.12 + Math.random() * 0.42),
+    vx: (Math.random() - 0.5) * 1.8,
+    vy: -(8 + Math.random() * 3),
+    color: colors[Math.floor(Math.random() * colors.length)]
+  });
+}
+
+
+let audioContext = null;
+
+function enableFireworkSound() {
+  if (!audioContext) {
+    audioContext = new (
+      window.AudioContext || window.webkitAudioContext
+    )();
+  }
+
+
+
+
+  audioContext.resume();
+}
+
+function playFireworkSound() {
+  if (!audioContext || audioContext.state !== "running") {
+    return;
+  }
+
+  const duration = 0.25;
+  const sampleRate = audioContext.sampleRate;
+
+  const buffer = audioContext.createBuffer(
+    1,
+    Math.floor(sampleRate * duration),
+    sampleRate
+  );
+
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < data.length; i++) {
+    const fade = Math.pow(1 - i / data.length, 3);
+    data[i] = (Math.random() * 2 - 1) * fade;
+  }
+
+  const source = audioContext.createBufferSource();
+  source.buffer = buffer;
+
+  const gain = audioContext.createGain();
+  gain.gain.value = 0.07;
+
+  source.connect(gain);
+  gain.connect(audioContext.destination);
+  source.start();
+}
+
+function explode(rocket) {
+playFireworkSound();
+
+
+
+  const count = 55;
+  const golden = Math.random() < 0.45;
+
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count;
+    const speed = 2 + Math.random() * 3.5;
+
+    particles.push({
+      x: rocket.x,
+      y: rocket.y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 1,
+      color: golden ? "#ffd36b" : rocket.color,
+      gravity: golden ? 0.065 : 0.035,
+      decay: golden ? 0.012 : 0.018
+    });
+  }
+}
+
+
+  
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Move rockets
+  for (let i = rockets.length - 1; i >= 0; i--) {
+    const r = rockets[i];
+
+    r.x += r.vx;
+    r.y += r.vy;
+    r.vy += 0.04;
+
+    ctx.strokeStyle = r.color;
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(r.x, r.y + 18);
+    ctx.lineTo(r.x, r.y);
+    ctx.stroke();
+
+    if (r.y <= r.targetY || r.vy >= 0) {
+      explode(r);
+      rockets.splice(i, 1);
+    }
+  }
+
+  // Draw firework particles
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+
+   
+p.x += p.vx;
+p.y += p.vy;
+p.vx *= 0.985;
+p.vy *= 0.985;
+p.vy += p.gravity ?? 0.035;
+p.life -= p.decay ?? 0.018;
+
+
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.fillStyle = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animate);
+}
+
+// Launch multiple rockets continuously
+setInterval(() => {
+  launchRocket();
+  launchRocket();
+  launchRocket();
+}, 900);
+
+launchRocket();
+launchRocket();
+
+animate();
+</script>
+
+<button id="soundBtn"
+  onclick="enableFireworkSound(); this.textContent='🔊 Sound ON';"
+  style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    background: #161b30;
+    color: gold;
+    border: 1px solid gold;
+    border-radius: 25px;
+    padding: 12px 20px;
+    cursor: pointer;
+  ">
+  🔇 Enable Sound
+</button>
+
+<script>
+  // Create 100 twinkling stars
+  const nightSky = document.getElementById("nightStars");
+
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement("span");
+
+    star.className = "night-star";
+
+    // Random position
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    // Different twinkling speeds
+    star.style.animationDuration =
+      (1.5 + Math.random() * 3) + "s";
+
+    star.style.animationDelay =
+      (Math.random() * -5) + "s";
+
+    nightSky.appendChild(star);
+  }
+</script>
+
+</body>
+</html>
